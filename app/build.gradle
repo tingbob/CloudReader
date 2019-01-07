@@ -31,17 +31,17 @@ android {
     signingConfigs {
         if (propertyHaveSigningConfigs) {
             debug {
-                storeFile file(pStoreFile)
-                storePassword pStorePassword
-                keyAlias pKeyAlias
-                keyPassword pKeyPassword
+                storeFile file('../keystore/android.keystore')
+                storePassword '1234567890'
+                keyAlias 'androidkeystore'
+                keyPassword '1234567890'
             }
 
             release {
-                storeFile file(pStoreFile)
-                storePassword pStorePassword
-                keyAlias pKeyAlias
-                keyPassword pKeyPassword
+                storeFile file('../keystore/android.keystore')
+                storePassword '1234567890'
+                keyAlias 'androidkeystore'
+                keyPassword '1234567890'
             }
         }
     }
@@ -77,7 +77,7 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
     implementation "android.arch.persistence.room:rxjava2:$rootProject.roomVersion"
-    implementation "android.arch.paging:runtime:1.0.0"
+    implementation "android.arch.paging:runtime:1.0.1"
 
 //    implementation "android.arch.lifecycle:common-java8:1.0.0"
     implementation 'android.arch.lifecycle:extensions:1.1.1'
@@ -85,9 +85,8 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.0'
 
     // 用于Flowable的rxjava
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-//    implementation 'io.reactivex:rxandroid:1.2.1'
-//    implementation "io.reactivex.rxjava2:rxjava:2.1.7"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+//    implementation "io.reactivex.rxjava2:rxjava:2.2.5"
 
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
@@ -102,6 +101,6 @@ dependencies {
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
     // bugly start
-    implementation 'com.tencent.bugly:crashreport:2.6.6.1'
-    implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
+    implementation 'com.tencent.bugly:crashreport:2.8.6'
+    implementation 'com.tencent.bugly:nativecrashreport:3.6.0.1'
 }
