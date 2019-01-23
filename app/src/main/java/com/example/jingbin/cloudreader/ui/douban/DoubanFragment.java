@@ -37,13 +37,15 @@ public class DoubanFragment extends BaseFragment<NoViewModel, FragmentGankBindin
         if (!mIsPrepared || !mIsVisible || !mIsFirst) {
             return;
         }
-        initFragmentList();
-        MyFragmentPagerAdapter myAdapter = new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitleList);
-        bindingView.vpGank.setAdapter(myAdapter);
-        myAdapter.notifyDataSetChanged();
-        bindingView.tabGank.setTabMode(TabLayout.MODE_FIXED);
-        bindingView.tabGank.setupWithViewPager(bindingView.vpGank);
-        mIsFirst = false;
+        bindingView.vpGank.postDelayed(() -> {
+            initFragmentList();
+            MyFragmentPagerAdapter myAdapter = new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitleList);
+            bindingView.vpGank.setAdapter(myAdapter);
+            myAdapter.notifyDataSetChanged();
+            bindingView.tabGank.setTabMode(TabLayout.MODE_FIXED);
+            bindingView.tabGank.setupWithViewPager(bindingView.vpGank);
+            mIsFirst = false;
+        }, 110);
     }
 
     @Override

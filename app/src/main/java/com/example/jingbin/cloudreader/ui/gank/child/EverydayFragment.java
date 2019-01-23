@@ -68,7 +68,6 @@ public class EverydayFragment extends BaseFragment<EverydayViewModel, FragmentEv
         showContentView();
         initAnimation();
         initRecyclerView();
-        UpdateUtil.check(getActivity(), false);
 
         mIsPrepared = true;
         /**
@@ -83,7 +82,7 @@ public class EverydayFragment extends BaseFragment<EverydayViewModel, FragmentEv
         if (!mIsVisible || !mIsPrepared) {
             return;
         }
-        bindingView.xrvEveryday.postDelayed(() -> viewModel.loadData(), 300);
+        bindingView.xrvEveryday.postDelayed(() -> viewModel.loadData(), 150);
     }
 
     private void initRecyclerView() {

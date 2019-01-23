@@ -12,7 +12,6 @@ import com.example.jingbin.cloudreader.adapter.DouBanTopAdapter;
 import com.example.jingbin.cloudreader.base.BaseActivity;
 import com.example.jingbin.cloudreader.bean.HotMovieBean;
 import com.example.jingbin.cloudreader.databinding.ActivityDoubanTopBinding;
-import com.example.jingbin.cloudreader.utils.DebugUtil;
 import com.example.jingbin.cloudreader.viewmodel.movie.DoubanTopViewModel;
 import com.example.xrecyclerview.XRecyclerView;
 
@@ -34,13 +33,14 @@ public class DoubanTopActivity extends BaseActivity<DoubanTopViewModel, Activity
     }
 
     private void initRecyclerView() {
-        mDouBanTopAdapter = new DouBanTopAdapter(DoubanTopActivity.this);
+        mDouBanTopAdapter = new DouBanTopAdapter();
         bindingView.xrvTop.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         bindingView.xrvTop.setPullRefreshEnabled(false);
         bindingView.xrvTop.setItemAnimator(null);
         bindingView.xrvTop.clearHeader();
         bindingView.xrvTop.setLoadingMoreEnabled(true);
         bindingView.xrvTop.setAdapter(mDouBanTopAdapter);
+        mDouBanTopAdapter.setListener((bean, view) -> OneMovieDetailActivity.start(DoubanTopActivity.this, bean, view));
         bindingView.xrvTop.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -59,14 +59,14 @@ public class DoubanTopActivity extends BaseActivity<DoubanTopViewModel, Activity
             @Override
             public void onChanged(@Nullable HotMovieBean bean) {
                 if (bean != null && bean.getSubjects() != null && bean.getSubjects().size() > 0) {
-                    int positionStart = mDouBanTopAdapter.getItemCount() + 1;
                     if (viewModel.getStart() == 0) {
                         showContentView();
                         mDouBanTopAdapter.clear();
                     }
-                    bindingView.xrvTop.refreshComplete();
+                    int positionStart = mDouBanTopAdapter.getItemCount() + 1;
                     mDouBanTopAdapter.addAll(bean.getSubjects());
-                    mDouBanTopAdapter.notifyItemRangeChanged(positionStart, bean.getSubjects().size());
+                    mDouBanTopAdapter.notifyItemRangeInserted(positionStart, bean.getSubjects().size());
+                    bindingView.xrvTop.refreshComplete();
                 } else {
                     if (mDouBanTopAdapter.getItemCount() == 0) {
                         showError();

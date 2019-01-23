@@ -51,7 +51,7 @@ If you have any questions, please write to [the issue][21] of making you don't u
 
 
 ## See Detail
-> [项目介绍详情](https://github.com/youlookwhat/CloudReader/blob/master/file/Introduction.md) | [细节优化详情](https://github.com/youlookwhat/CloudReader/wiki) | [**版本更新详情(V2.2)**](http://jingbin.me/2016/12/30/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-%E4%BA%91%E9%98%85/)
+> [项目介绍详情](https://github.com/youlookwhat/CloudReader/blob/master/file/Introduction.md) | [细节优化详情](https://github.com/youlookwhat/CloudReader/wiki) | [**版本更新详情(V2.5.0)**](http://jingbin.me/2016/12/30/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-%E4%BA%91%E9%98%85/)
 
 ### Download
 　[火速跳转](https://fir.im/cloudreader)                                    
@@ -65,10 +65,16 @@ If you have any questions, please write to [the issue][21] of making you don't u
 　
 
 ### Version
+#### V2.6.0（2019-01-16）
+ - 1、[新增] 豆瓣即将上映电影数据
+ - 2、[优化] 启动白屏问题优化
+ - 3、[优化] RecyclerView列表加载优化
+ - 4、[修复] 修复无邮箱应用时点击跳转崩溃问题
+
 #### V2.5.0（12-28）
  - 1、[规范] 所有页面mvvm架构修正
  - 2、[优化] 将电影和书籍放置在一块
- - 3、[新增] 可作为三方浏览器打开外部链接
+ - 3、[新增] 可[作为三方浏览器打开外部链接](https://www.jianshu.com/p/272bfb6c0779)
  - 4、[修复] 修复部分兼容性bug
 
 #### V2.2（12-05）
@@ -87,6 +93,7 @@ If you have any questions, please write to [the issue][21] of making you don't u
  - 6、[修复] 段子头像显示不全修复
  - 7、[优化] 首页ui及部分图片显示比例优化
 
+<!-- 
 #### V1.9.4（05-21）
  - 1、[修复] 修复干货订制点击“选择分类”崩溃的bug
  - 2、[新增] 干货订制页面长按item增加[水波纹扩散效果](https://jingbin.me/2018/05/20/Android%20%E6%B0%B4%E6%B3%A2%E7%BA%B9%E6%95%88%E6%9E%9C%E7%9A%84%E6%8E%A2%E7%A9%B6/)
@@ -98,7 +105,6 @@ If you have any questions, please write to [the issue][21] of making you don't u
  - 4、[完善] 性能优化之[布局大幅优化](https://jingbin.me/2018/05/17/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/)
  - 5、[完善] 完善体验修复若干bug
 
-<!-- 
 #### V1.9.2（05-06）
  - 1、[完善] 主页显示结构修改
  - 2、[修复] 去掉内涵段子数据
@@ -171,7 +177,7 @@ If you have any questions, please write to [the issue][21] of making you don't u
 感谢[网易云音乐App](https://play.google.com/store/apps/details?id=com.netease.cloudmusic)提供参考，附上[《网易云音乐Android 3.0视觉设计规范文档》](http://www.25xt.com/appdesign/12385.html)。本人是网易云音乐的粉丝，使用了其中的部分素材，并非攻击，如构成侵权请及时通知我修改或删除。大部分数据来自于干货集中营和豆瓣APIV2.0，一切数据解释权都归代码家和豆瓣所有。
  
 ## End
-> 注意：此开源项目仅做学习交流使用，如用到实际项目还需多考虑其他因素如并发等，请多多斟酌。如果你觉得不错，对你有帮助，欢迎点个star，follow，也可以帮忙分享给你更多的朋友，或给点赞赏，这是给我们最大的动力与支持。
+> 注意：此开源项目仅做学习交流使用，如用到实际项目还需多考虑其他因素，请多多斟酌。如果你觉得不错，对你有帮助，欢迎点个star，follow，也可以帮忙分享给你更多的朋友，或给点赞赏，这是给我们最大的动力与支持。
 > 
 > 捐赠后均会被记录到列表中，可以留下友情链接，起到一定的推广作用。感谢大家的信任，[捐赠列表](https://github.com/youlookwhat/CloudReader/blob/master/file/admire.md)。
 
@@ -204,7 +210,7 @@ limitations under the License.
 [2]:https://www.apache.org/licenses/LICENSE-2.0.html
 [3]:https://img.shields.io/badge/API-19%2B-red.svg?style=flat
 [4]:https://android-arsenal.com/api?level=19
-[30]:https://img.shields.io/badge/release-2.5.0-red.svg
+[30]:https://img.shields.io/badge/release-2.6.0-red.svg
 [31]:https://github.com/youlookwhat/CloudReader/releases
 [32]:https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [33]:https://github.com/youlookwhat/CloudReader/pulls

@@ -73,18 +73,19 @@ public class ArticleListActivity extends BaseActivity<WanAndroidListViewModel, F
     }
 
     private void showContent(HomeListBean homeListBean) {
-        showContentView();
         if (bindingView.srlWan.isRefreshing()) {
             bindingView.srlWan.setRefreshing(false);
         }
 
         if (homeListBean != null) {
-            int positionStart = mAdapter.getItemCount() + 1;
             if (viewModel.getPage() == 0) {
+                showContentView();
                 mAdapter.clear();
+                mAdapter.notifyDataSetChanged();
             }
+            int positionStart = mAdapter.getItemCount() + 1;
             mAdapter.addAll(homeListBean.getData().getDatas());
-            mAdapter.notifyItemRangeChanged(positionStart, homeListBean.getData().getDatas().size());
+            mAdapter.notifyItemRangeInserted(positionStart, homeListBean.getData().getDatas().size());
             bindingView.xrvWan.refreshComplete();
 
         } else {

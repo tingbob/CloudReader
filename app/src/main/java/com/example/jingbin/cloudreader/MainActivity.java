@@ -39,12 +39,14 @@ import com.example.jingbin.cloudreader.ui.menu.NavHomePageActivity;
 import com.example.jingbin.cloudreader.ui.douban.DoubanFragment;
 import com.example.jingbin.cloudreader.ui.wan.WanFragment;
 import com.example.jingbin.cloudreader.ui.wan.child.MyCollectActivity;
+import com.example.jingbin.cloudreader.utils.BaseTools;
 import com.example.jingbin.cloudreader.utils.CommonUtils;
 import com.example.jingbin.cloudreader.utils.DialogBuild;
 import com.example.jingbin.cloudreader.utils.ImageLoadUtil;
 import com.example.jingbin.cloudreader.utils.PerfectClickListener;
 import com.example.jingbin.cloudreader.utils.SPUtils;
 import com.example.jingbin.cloudreader.utils.StringFormatUtil;
+import com.example.jingbin.cloudreader.utils.UpdateUtil;
 import com.example.jingbin.cloudreader.view.MyFragmentPagerAdapter;
 import com.example.jingbin.cloudreader.view.OnLoginListener;
 import com.example.jingbin.cloudreader.view.statusbar.StatusBarUtil;
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initContentFragment();
         initDrawerLayout();
         initListener();
+        UpdateUtil.check(this, false);
     }
 
     private void initStatusView() {
@@ -346,26 +349,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 获取剪切板链接
      */
     private void getClipContent() {
-        // 获取系统剪切板
-        ClipboardManager manager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        if (manager != null) {
-            if (manager.hasPrimaryClip() && manager.getPrimaryClip().getItemCount() > 0) {
-                CharSequence addedText = manager.getPrimaryClip().getItemAt(0).getText();
-                String addedTextString = String.valueOf(addedText);
-                if (!TextUtils.isEmpty(addedTextString)) {
-                    String formatUrl = StringFormatUtil.formatUrl(String.valueOf(addedText));
-                    if (!TextUtils.isEmpty(formatUrl)) {
-                        DialogBuild.showCustom(vpContent, addedTextString, "打开其中链接", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                WebViewActivity.loadUrl(MainActivity.this, formatUrl, "加载中..");
-                                // 清除剪切板内容
-                                manager.setText(null);
-                            }
-                        });
-                    }
+        String clipContent = BaseTools.getClipContent();
+        if (!TextUtils.isEmpty(clipContent)) {
+            DialogBuild.showCustom(vpContent, clipContent, "打开其中链接", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    WebViewActivity.loadUrl(MainActivity.this, clipContent, "加载中..");
+                    BaseTools.clearClipboard();
                 }
-            }
+            });
         }
     }
 
